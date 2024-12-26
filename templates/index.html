@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <title>Yüz Tanıma Sonucu</title>
+</head>
+<body>
+<h1>Yüz Tanıma Sonucu</h1>
+<img src="data:image/jpeg;base64, {{ image_base64 }}">
+
+{% if status == "success" %}
+<h2>Öğrenci Tanındı!</h2>
+<p>Öğrenci Numarası: {{ student_number }}</p>
+<p>İsim: {{ student_data['name'] }}</p>
+<p>Diğer Bilgiler:</p>
+<pre>{{ student_data | tojson }}</pre>
+{% elif status == "error" %}
+<h2>Hata: {{ message }}</h2>
+{% else %}
+<p>Beklenmedik bir durum oluştu.</p>
+{% endif %}
+
+
+</body>
+</html>
